@@ -1,0 +1,162 @@
+<definitions name='WSGrupo' targetNamespace='http://ws.servico.repositorio.cnpq.br/' xmlns='http://schemas.xmlsoap.org/wsdl/' xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/' xmlns:tns='http://ws.servico.repositorio.cnpq.br/' xmlns:xsd='http://www.w3.org/2001/XMLSchema'>
+ <types>
+  <xs:schema targetNamespace='http://ws.servico.repositorio.cnpq.br/' version='1.0' xmlns:tns='http://ws.servico.repositorio.cnpq.br/' xmlns:xs='http://www.w3.org/2001/XMLSchema'>
+   <xs:element name='getIdsGrupos' type='tns:getIdsGrupos'/>
+   <xs:element name='getIdsGruposPorDataAtualizacao' type='tns:getIdsGruposPorDataAtualizacao'/>
+   <xs:element name='getIdsGruposPorDataAtualizacaoResponse' type='tns:getIdsGruposPorDataAtualizacaoResponse'/>
+   <xs:element name='getIdsGruposResponse' type='tns:getIdsGruposResponse'/>
+   <xs:element name='getUpdate' type='tns:getUpdate'/>
+   <xs:element name='getUpdateResponse' type='tns:getUpdateResponse'/>
+   <xs:element name='getXMLGrupo' type='tns:getXMLGrupo'/>
+   <xs:element name='getXMLGrupoResponse' type='tns:getXMLGrupoResponse'/>
+   <xs:complexType name='getXMLGrupo'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='idGrupo' type='xs:string'/>
+     <xs:element minOccurs='0' name='anoCenso' type='xs:string'/>
+     <xs:element minOccurs='0' name='senha' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getXMLGrupoResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='tns:grupoDePesquisa'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='grupoDePesquisa'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='anoCenso' type='xs:string'/>
+     <xs:element minOccurs='0' name='dataAtualizacao' type='xs:string'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='erros' nillable='true' type='xs:string'/>
+     <xs:element minOccurs='0' name='id' type='xs:string'/>
+     <xs:element minOccurs='0' name='nome' type='xs:string'/>
+     <xs:element minOccurs='0' name='zipXMLs' type='xs:base64Binary'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getUpdate'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='idGrupo' type='xs:string'/>
+     <xs:element minOccurs='0' name='anoCenso' type='xs:string'/>
+     <xs:element minOccurs='0' name='senha' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getUpdateResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='tns:grupoDePesquisa'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getIdsGrupos'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='uf' type='xs:string'/>
+     <xs:element minOccurs='0' name='sigla' type='xs:string'/>
+     <xs:element minOccurs='0' name='anoCenso' type='xs:string'/>
+     <xs:element minOccurs='0' name='senha' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getIdsGruposResponse'>
+    <xs:sequence>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='return' type='tns:grupoDePesquisa'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getIdsGruposPorDataAtualizacao'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='dataInicio' type='xs:string'/>
+     <xs:element minOccurs='0' name='dataFim' type='xs:string'/>
+     <xs:element minOccurs='0' name='uf' type='xs:string'/>
+     <xs:element minOccurs='0' name='anoCenso' type='xs:string'/>
+     <xs:element minOccurs='0' name='sigla' type='xs:string'/>
+     <xs:element minOccurs='0' name='senha' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getIdsGruposPorDataAtualizacaoResponse'>
+    <xs:sequence>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='return' type='tns:grupoDePesquisa'/>
+    </xs:sequence>
+   </xs:complexType>
+  </xs:schema>
+ </types>
+ <message name='WSGrupo_getIdsGrupos'>
+  <part element='tns:getIdsGrupos' name='getIdsGrupos'></part>
+ </message>
+ <message name='WSGrupo_getXMLGrupo'>
+  <part element='tns:getXMLGrupo' name='getXMLGrupo'></part>
+ </message>
+ <message name='WSGrupo_getUpdate'>
+  <part element='tns:getUpdate' name='getUpdate'></part>
+ </message>
+ <message name='WSGrupo_getIdsGruposPorDataAtualizacao'>
+  <part element='tns:getIdsGruposPorDataAtualizacao' name='getIdsGruposPorDataAtualizacao'></part>
+ </message>
+ <message name='WSGrupo_getXMLGrupoResponse'>
+  <part element='tns:getXMLGrupoResponse' name='getXMLGrupoResponse'></part>
+ </message>
+ <message name='WSGrupo_getIdsGruposPorDataAtualizacaoResponse'>
+  <part element='tns:getIdsGruposPorDataAtualizacaoResponse' name='getIdsGruposPorDataAtualizacaoResponse'></part>
+ </message>
+ <message name='WSGrupo_getUpdateResponse'>
+  <part element='tns:getUpdateResponse' name='getUpdateResponse'></part>
+ </message>
+ <message name='WSGrupo_getIdsGruposResponse'>
+  <part element='tns:getIdsGruposResponse' name='getIdsGruposResponse'></part>
+ </message>
+ <portType name='WSGrupo'>
+  <operation name='getIdsGrupos' parameterOrder='getIdsGrupos'>
+   <input message='tns:WSGrupo_getIdsGrupos'></input>
+   <output message='tns:WSGrupo_getIdsGruposResponse'></output>
+  </operation>
+  <operation name='getIdsGruposPorDataAtualizacao' parameterOrder='getIdsGruposPorDataAtualizacao'>
+   <input message='tns:WSGrupo_getIdsGruposPorDataAtualizacao'></input>
+   <output message='tns:WSGrupo_getIdsGruposPorDataAtualizacaoResponse'></output>
+  </operation>
+  <operation name='getUpdate' parameterOrder='getUpdate'>
+   <input message='tns:WSGrupo_getUpdate'></input>
+   <output message='tns:WSGrupo_getUpdateResponse'></output>
+  </operation>
+  <operation name='getXMLGrupo' parameterOrder='getXMLGrupo'>
+   <input message='tns:WSGrupo_getXMLGrupo'></input>
+   <output message='tns:WSGrupo_getXMLGrupoResponse'></output>
+  </operation>
+ </portType>
+ <binding name='WSGrupoBinding' type='tns:WSGrupo'>
+  <soap:binding style='document' transport='http://schemas.xmlsoap.org/soap/http'/>
+  <operation name='getIdsGrupos'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='getIdsGruposPorDataAtualizacao'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='getUpdate'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='getXMLGrupo'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+ </binding>
+ <service name='WSGrupo'>
+  <port binding='tns:WSGrupoBinding' name='WSGrupoPort'>
+   <soap:address location='https://cnpqwsproxy.ufscar.br:7443/wsgrupos/WSGrupoSoapHttpPort'/>
+  </port>
+ </service>
+</definitions>

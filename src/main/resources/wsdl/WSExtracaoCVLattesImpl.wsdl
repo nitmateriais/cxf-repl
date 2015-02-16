@@ -1,0 +1,135 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://br.cnpq.cvlattes.extracaocv/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="WSExtracaoCVLattesService" targetNamespace="http://br.cnpq.cvlattes.extracaocv/wsdl">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://br.cnpq.cvlattes.extracaocv/wsdl" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://br.cnpq.cvlattes.extracaocv/wsdl">
+  <xs:element name="extrairItens" type="tns:extrairItens"/>
+  <xs:element name="extrairItensResponse" type="tns:extrairItensResponse"/>
+  <xs:element name="getItensDisponiveis" type="tns:getItensDisponiveis"/>
+  <xs:element name="getItensDisponiveisResponse" type="tns:getItensDisponiveisResponse"/>
+  <xs:complexType name="getItensDisponiveis">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="getItensDisponiveisResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:parametroItemResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="parametroItemResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="itensDisponiveis" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="wscvLattesFault">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="faultCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="faultString" type="xs:string"/>
+      <xs:element minOccurs="0" name="tipo" type="tns:wscvLattesFaultType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="extrairItens">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="tns:cvLattesRequest"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="cvLattesRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="parametros" type="tns:parametroDTOImpl"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="parametroDTOImpl">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="anoInicio" type="xs:string"/>
+      <xs:element minOccurs="0" name="anoTermino" type="xs:string"/>
+      <xs:element minOccurs="0" name="idCNPq" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="listaIdModuloItem" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="extrairItensResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:cvLattesResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="cvLattesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="xml" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="wscvLattesFaultType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ERRO"/>
+      <xs:enumeration value="INFO"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="WSCVLattesFault" nillable="true" type="tns:wscvLattesFault"/>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="extrairItensResponse">
+    <wsdl:part element="tns:extrairItensResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getItensDisponiveisResponse">
+    <wsdl:part element="tns:getItensDisponiveisResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="extrairItens">
+    <wsdl:part element="tns:extrairItens" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WSCVLattesException">
+    <wsdl:part element="tns:WSCVLattesFault" name="WSCVLattesException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getItensDisponiveis">
+    <wsdl:part element="tns:getItensDisponiveis" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="WSExtracaoCVLattes">
+    <wsdl:operation name="getItensDisponiveis">
+      <wsdl:input message="tns:getItensDisponiveis" name="getItensDisponiveis">
+    </wsdl:input>
+      <wsdl:output message="tns:getItensDisponiveisResponse" name="getItensDisponiveisResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:WSCVLattesException" name="WSCVLattesException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="extrairItens">
+      <wsdl:input message="tns:extrairItens" name="extrairItens">
+    </wsdl:input>
+      <wsdl:output message="tns:extrairItensResponse" name="extrairItensResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:WSCVLattesException" name="WSCVLattesException">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WSExtracaoCVLattesServiceSoapBinding" type="tns:WSExtracaoCVLattes">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="extrairItens">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="extrairItens">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="extrairItensResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="WSCVLattesException">
+        <soap:fault name="WSCVLattesException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getItensDisponiveis">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getItensDisponiveis">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getItensDisponiveisResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="WSCVLattesException">
+        <soap:fault name="WSCVLattesException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WSExtracaoCVLattesService">
+    <wsdl:port binding="tns:WSExtracaoCVLattesServiceSoapBinding" name="WSExtracaoCVLattesPort">
+      <soap:address location="https://cnpqwsproxy.ufscar.br:7443/wsmodulocv/WSExtracaoCVLattesService/WSExtracaoCVLattesImpl"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
