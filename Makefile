@@ -9,5 +9,5 @@ $(EXPLODED_WAR):
 	mvn compile war:exploded
 
 repl: $(EXPLODED_WAR)
-	CLASSPATH="$$CLASSPATH:$(EXPLODED_WAR)/WEB-INF/lib:$(EXPLODED_WAR)/WEB-INF/classes" ; \
+	CLASSPATH="$$CLASSPATH:$(EXPLODED_WAR)/WEB-INF/lib/*:$(EXPLODED_WAR)/WEB-INF/classes" \
 	exec java -Djavax.net.ssl.trustStore=cert/cacerts org.python.util.jython
