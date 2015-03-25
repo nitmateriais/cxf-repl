@@ -13,7 +13,7 @@ Place your WSDL files in `src/main/resources/wsdl`. By default, it contains WSDL
 
 For TLS encrypted webservices, you need to place the server certificates in the `cert/cacerts` keystore. Use the following command:
 
-`keytool -keystore cert/cacerts -importcert -file input.crt`
+`keytool -keystore cert/cacerts -importcert -alias keyname -file input.crt`
 
 The keystore password is `changeit`.
 
