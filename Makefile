@@ -1,9 +1,9 @@
 EXPLODED_WAR = target/cxf-repl-1.0-SNAPSHOT
 
+all: $(EXPLODED_WAR)
+
 clean:
 	mvn clean
-
-all: $(EXPLODED_WAR)
 
 $(EXPLODED_WAR):
 	mvn compile war:exploded
